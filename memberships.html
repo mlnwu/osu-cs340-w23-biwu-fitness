@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <nav id="navbar">
+        <ul>
+            <li class="item"><a href="index.html">Home</a></li>
+            <li class="item"><a href="members.html">Members</a></li>
+            <li class="item"><a href="memberships.html">Memberships</a></li>
+            <li class="item"><a href="trainers.html">Trainers</a></li>
+            <li class="item"><a href="classes.html">Classes</a></li>
+        </ul>
+    </nav>
+</body>
+<h3>Record a New Membership Transaction:</h3>
+<form id="addtransaction" action="/memberships" method="post">
+    Member ID: <select name="memberid"> 
+        <option value="{{member.id}}">Select ID</option>
+        <option value="{{member.id}}">1</option>
+        <option value="{{member.id}}">2</option>
+        <option value="{{member.id}}">3</option>
+        <option value="{{member.id}}">4</option>
+        <option value="{{member.id}}">5</option>
+    </select><br>
+    Tier Type: <select name="tiertype"> 
+        <option value="{{tier.type}}">Standard</option>
+        <option value="{{tier.type}}">Premium</option>
+    </select><br>
+    Payment Amount: <input type="number" name="pamount"><br>
+    Payment Date: <input type="date" name="pdate"><br>
+    <input type="submit" value="Add New Member">
+ </form>
+<br/>
+
+<h3>Membership Transaction History:</h3>
+<table border='1'>
+    <thead> 
+        <th>Payment ID</th> 
+        <th>Member ID</th> 
+        <th>Tier Type</th>  
+        <th>Payment Amount</th>  
+        <th>Payment Date</th>
+    </thead> 
+    <tbody>
+        <tr> 
+            <td>Ex. 1</td> 
+            <td>Ex. 1</td> 
+            <td>Ex. standard</td>
+            <td>Ex. 40.00</td>
+            <td>Ex. 2022-07-01</td> 
+        </tr>
+    </tbody> 
+</table> 
+</html>
