@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <nav id="navbar">
+        <ul>
+            <li class="item"><a href="index.html">Home</a></li>
+            <li class="item"><a href="members.html">Members</a></li>
+            <li class="item"><a href="memberships.html">Memberships</a></li>
+            <li class="item"><a href="trainers.html">Trainers</a></li>
+            <li class="item"><a href="classes.html">Classes</a></li>
+        </ul>
+    </nav>
+</body>
+<h3>Add a Class:</h3>
+<form id="addclass" action="/classes" method="post">
+    Class Type: <select name="classtype"> 
+        <option value="{{classtype}}">Select Class Type</option>
+        <option value="{{classtype}}">Weight Training</option>
+        <option value="{{classtype}}">Cardio</option>
+        <option value="{{classtype}}">Yoga</option>
+    </select><br>
+    Trainer ID: <select name="trainerid"> 
+        <option value="{{trainerid}}">Select Trainer ID</option>
+        <option value="{{trainerid}}">1</option>
+        <option value="{{trainerid}}">2</option>
+        <option value="{{trainerid}}">3</option>
+    </select><br>
+    Start Time: <input type="time" name="starttime"><br>
+    End Time: <input type="time" name="endtime"><br>
+    <input type="submit" value="Add Class">
+ </form>
+<br/>
+
+<h3>Class Schedule:</h3>
+<table border='1'>
+    <thead> 
+        <th>Class ID</th>
+        <th>Trainer ID</th>
+        <th>Class Type</th> 
+        <th>Start Time</th> 
+        <th>End Time</th>  
+    </thead> 
+    <tbody>
+        <tr> 
+            <td>Ex. 1</td>
+            <td>Ex. 1</td> 
+            <td>Ex. Weight Training</td> 
+            <td>Ex. 14:30:00</td>
+            <td>Ex. 15:30:00</td>
+            <td><button onclick="deleteClass({{class.id}})">Delete</button></td>
+            <td><button onclick="updateClass({{class.id}})">Update</button></td>
+        </tr>
+    </tbody> 
+</table> 
+
+<h3>Class Registration Log:</h3>
+<table border='1'>
+    <thead> 
+        <th>Class ID</th>
+        <th>Member ID</th>
+    </thead> 
+    <tbody>
+        <tr> 
+            <td>Ex. 3</td>
+            <td>Ex. 1</td> 
+            <td><button onclick="deleteMember({{member.id}})">Delete</button></td>
+            <td><button onclick="updateMember({{member.id}})">Update</button></td>
+        </tr>
+    </tbody> 
+</table> 
+</html>
