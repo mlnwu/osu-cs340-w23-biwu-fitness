@@ -25,6 +25,23 @@
         <option value="{{trainerid}}">2</option>
         <option value="{{trainerid}}">3</option>
     </select><br>
+    Days: <div class="weekDays-selector">
+        <input type="checkbox" id="weekday-mon" class="weekday" />
+        <label for="weekday-mon">Mon</label>
+        <input type="checkbox" id="weekday-tue" class="weekday" />
+        <label for="weekday-tue">Tue</label>
+        <input type="checkbox" id="weekday-wed" class="weekday" />
+        <label for="weekday-wed">Wed</label>
+        <input type="checkbox" id="weekday-thu" class="weekday" />
+        <label for="weekday-thu">Thu</label>
+        <input type="checkbox" id="weekday-fri" class="weekday" />
+        <label for="weekday-fri">Fri</label>
+        <input type="checkbox" id="weekday-sat" class="weekday" />
+        <label for="weekday-sat">Sat</label>
+        <input type="checkbox" id="weekday-sun" class="weekday" />
+        <label for="weekday-sun">Sun</label>
+      </div>
+    </select><br>
     Start Time: <input type="time" name="starttime"><br>
     End Time: <input type="time" name="endtime"><br>
     <input type="submit" value="Add Class">
@@ -37,6 +54,7 @@
         <th>Class ID</th>
         <th>Trainer ID</th>
         <th>Class Type</th> 
+        <th>Days</th>
         <th>Start Time</th> 
         <th>End Time</th>  
     </thead> 
@@ -45,6 +63,7 @@
             <td>Ex. 1</td>
             <td>Ex. 1</td> 
             <td>Ex. Weight Training</td> 
+            <td>Ex. Mon, Wed, Fri</td>
             <td>Ex. 14:30:00</td>
             <td>Ex. 15:30:00</td>
             <td><button onclick="deleteClass({{class.id}})">Delete</button></td>
