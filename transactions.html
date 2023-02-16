@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <nav id="navbar">
+        <ul>
+            <li class="item"><a href="index.html">Home</a></li>
+            <li class="item"><a href="members.html">Members</a></li>
+            <li class="item"><a href="transactions.html">Transactions</a></li>
+            <li class="item"><a href="trainers.html">Trainers</a></li>
+            <li class="item"><a href="classes.html">Classes</a></li>
+        </ul>
+    </nav>
+</body>
+<h3>Record a New Membership Transaction:</h3>
+<form id="addtransaction" action="/memberships" method="post">
+    Transaction Amount: <input type="number" name="tamount"><br>
+    Transaction Date: <input type="date" name="tdate"><br>
+    <input type="submit" value="Record Transaction">
+ </form>
+<br/>
+
+<h3>Transaction Details:</h3>
+<table border='1'>
+    <thead> 
+        <th>Transaction ID</th> 
+        <th>Transaction Amount</th>  
+        <th>Transaction Date</th>
+    </thead> 
+    <tbody>
+        <tr> 
+            <td>Ex. 1</td> 
+            <td>Ex. 40.00</td>
+            <td>Ex. 2022-07-01</td> 
+        </tr>
+    </tbody> 
+</table> 
+
+<h3>Membership Transaction History:</h3>
+<table border='1'>
+    <thead> 
+        <th>Transaction ID</th> 
+        <th>Member ID</th> 
+    </thead> 
+    <tbody>
+        <tr> 
+            <td>Ex. 1</td> 
+            <td>Ex. 1</td> 
+        </tr>
+    </tbody> 
+</table> 
+</html>
