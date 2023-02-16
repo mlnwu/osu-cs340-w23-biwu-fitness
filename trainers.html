@@ -5,7 +5,7 @@
         <ul>
             <li class="item"><a href="index.html">Home</a></li>
             <li class="item"><a href="members.html">Members</a></li>
-            <li class="item"><a href="memberships.html">Memberships</a></li>
+            <li class="item"><a href="transactions.html">Transactions</a></li>
             <li class="item"><a href="trainers.html">Trainers</a></li>
             <li class="item"><a href="classes.html">Classes</a></li>
         </ul>
@@ -17,12 +17,6 @@
     Last name: <input type="text" name="lname"><br>
     Phone number: <input type="text" name="phone"><br>
     Email: <input type="text" name="email"><br>
-    Specialization: <select name="specialization"> 
-        <option value="{{specialization}}">Select Specialization</option>
-        <option value="{{specialization}}">Weight Training</option>
-        <option value="{{specialization}}">Cardio</option>
-        <option value="{{specialization}}">Yoga</option>
-    </select><br>
     <input type="submit" value="Add New Trainer">
  </form>
 <br/>
@@ -35,7 +29,6 @@
         <th>Last Name</th> 
         <th>Phone Number</th>  
         <th>Email</th>  
-        <th>Specialization</th>  
     </thead> 
     <tbody>
         <tr> 
@@ -44,7 +37,6 @@
             <td>Ex. Williams</td> 
             <td>Ex. 5550000000</td>
             <td>Ex. sandrawilliams@example.com</td>
-            <td>Ex. Weight Training</td>
             <td><button onclick="deleteTrainer({{trainer.id}})">Delete</button></td>
             <td><button onclick="updateTrainer({{trainer.id}})">Update</button></td>
         </tr>
