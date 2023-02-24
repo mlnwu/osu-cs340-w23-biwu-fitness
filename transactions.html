@@ -1,51 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>
-    <nav id="navbar">
-        <ul>
-            <li class="item"><a href="index.html">Home</a></li>
-            <li class="item"><a href="members.html">Members</a></li>
-            <li class="item"><a href="transactions.html">Transactions</a></li>
-            <li class="item"><a href="trainers.html">Trainers</a></li>
-            <li class="item"><a href="classes.html">Classes</a></li>
-        </ul>
-    </nav>
-</body>
-<h3>Record a New Membership Transaction:</h3>
+
+<nav id="navbar">
+    <h2>BW</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="trainers.html">Trainers</a></li>
+        <li><a href="classes.html">Classes</a></li>
+    </ul>
+</nav>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <h1>Transactions</h1>
+</head>
+
+<h3>Record a New Membership Transaction</h3>
 <form id="addtransaction" action="/memberships" method="post">
-    Transaction Amount: <input type="number" name="tamount"><br>
-    Transaction Date: <input type="date" name="tdate"><br>
-    <input type="submit" value="Record Transaction">
- </form>
-<br/>
+    <ul class="form-style-1">
+        Transaction Amount: <span class="required">*</span><br><input type="number" name="tamount"><br><br>
+        Transaction Date: <span class="required">*</span><br><input type="date" name="tdate"><br><br>
+        <input type="submit" value="Record Transaction">
+    </ul>
+</form>
+<br />
 
-<h3>Transaction Details:</h3>
-<table border='1'>
-    <thead> 
-        <th>Transaction ID</th> 
-        <th>Transaction Amount</th>  
+<h3>Transaction Details</h3>
+<table>
+    <thead>
+        <th>Transaction ID</th>
+        <th>Transaction Amount</th>
         <th>Transaction Date</th>
-    </thead> 
+    </thead>
     <tbody>
-        <tr> 
-            <td>Ex. 1</td> 
+        <tr>
+            <td>Ex. 1</td>
             <td>Ex. 40.00</td>
-            <td>Ex. 2022-07-01</td> 
+            <td>Ex. 2022-07-01</td>
         </tr>
-    </tbody> 
-</table> 
+    </tbody>
+</table>
 
-<h3>Membership Transaction History:</h3>
-<table border='1'>
-    <thead> 
-        <th>Transaction ID</th> 
-        <th>Member ID</th> 
-    </thead> 
+<br>
+
+<h3>Membership Transaction History</h3>
+<table>
+    <thead>
+        <th>Transaction ID</th>
+        <th>Member ID</th>
+    </thead>
     <tbody>
-        <tr> 
-            <td>Ex. 1</td> 
-            <td>Ex. 1</td> 
+        <tr>
+            <td>Ex. 1</td>
+            <td>Ex. 1</td>
         </tr>
-    </tbody> 
-</table> 
+    </tbody>
+</table>
+
+<body>
+    <footer>
+        <div class="footer">
+            <p>Copyright &copy; Biwu Fitness All rights are reserved.</p>
+        </div>
+    </footer>
+</body>
+
 </html>

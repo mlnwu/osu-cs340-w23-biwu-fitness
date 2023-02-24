@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>
-    <nav id="navbar">
-        <ul>
-            <li class="item"><a href="index.html">Home</a></li>
-            <li class="item"><a href="members.html">Members</a></li>
-            <li class="item"><a href="transactions.html">Transactions</a></li>
-            <li class="item"><a href="trainers.html">Trainers</a></li>
-            <li class="item"><a href="classes.html">Classes</a></li>
-        </ul>
-    </nav>
-</body>
-<h3>Add a New Member:</h3>
-<form id="addmember" action="/members" method="post">
-    First name: <input type="text" name="fname"><br>
-    Last name: <input type="text" name="lname"><br>
-    Tier Type: <select name="tiertype"> 
-        <option value="{{tier.type}}">Standard</option>
-        <option value="{{tier.type}}">Premium</option>
-    </select><br>
-    Phone number: <input type="text" name="phone"><br>
-    Email: <input type="text" name="email"><br>
-    <input type="submit" value="Add New Member">
- </form>
-<br/>
 
-<h3>Current Members:</h3>
-<table border='1'>
-    <thead> 
+<nav id="navbar">
+    <h2>BW</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="trainers.html">Trainers</a></li>
+        <li><a href="classes.html">Classes</a></li>
+    </ul>
+</nav>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <h1 class="h-primary">Members</h1>
+</head>
+
+<h3>Register a New Member</h3>
+<form id="addmember" action="/members" method="post">
+    <ul class="form-style-1">
+        First name:<span class="required">*</span><br><input type="text" name="fname"><br><br>
+        Last name: <span class="required">*</span><br><input type="text" name="lname"><br><br>
+        Tier Type: <span class="required">*</span><br><select name="tiertype">
+            <option value="{{tier.type}}">Standard</option>
+            <option value="{{tier.type}}">Premium</option>
+        </select><br><br>
+        Phone number: <span class="required">*</span><br><input type="text" name="phone"><br><br>
+        Email: <span class="required">*</span><br><input type="text" name="email"><br><br>
+        <input type="submit" value="Add New Member">
+    </ul>
+</form>
+<br />
+
+<h3>Current Members</h3>
+<table>
+    <thead>
         <th>Member ID</th>
-        <th>First Name</th> 
-        <th>Last Name</th> 
+        <th>First Name</th>
+        <th>Last Name</th>
         <th>Tier Type</th>
-        <th>Phone Number</th>  
-        <th>Email</th>  
-        <th>Tier Type</th>
-    </thead> 
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th> </th>
+        <th> </th>
+    </thead>
     <tbody>
-        <tr> 
+        <tr>
             <td>Ex. 1</td>
-            <td>Ex. Katherine</td> 
-            <td>Ex. Gonzales</td> 
+            <td>Ex. Katherine</td>
+            <td>Ex. Gonzales</td>
             <td>Ex. standard</td>
             <td>Ex. 5551234567</td>
             <td>Ex. katherinegonzales@example.com</td>
             <td><button onclick="deleteMember({{member.id}})">Delete</button></td>
             <td><button onclick="updateMember({{member.id}})">Update</button></td>
         </tr>
-    </tbody> 
-</table> 
+    </tbody>
+</table>
+
+<body>
+    <footer>
+        <div class="footer">
+            <p>Copyright &copy; Biwu Fitness All rights are reserved.</p>
+        </div>
+    </footer>
+</body>
+
 </html>
