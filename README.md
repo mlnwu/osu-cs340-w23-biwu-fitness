@@ -1,1 +1,6 @@
-# osu-cs361-w23-biwu-fitness
+# Biwu Fitness
+
+## Overview
+Biwu Fitness is an independently-operated gym. The gym has a few thousand members and regularly adds to this number with a few hundred new enrollments every year to its monthly membership program. This program allows members to sign up for its standard monthly subscription, which allows access to the gym’s facilities and basic classes, or a premium subscription, which allows access to additional small-group, more personalized classes and also allows a friend or family member to tag along without signing up!
+
+Without an existing database backend, however, it is difficult for Biwu Fitness to organize data on its members, trainers, and class offerings. In the future, the company would like this system to automate sending out subscription invoices to members, allow them to keep track of which members are enrolled in which classes, and provide functionality for sorting data by specific attributes for more efficient and meaningful business analytics. A database-driven website for Biwu Fitness will allow employees and management to document the few thousands Members and their Membership_Transactions, list the Trainers and Classes that supplement the gym’s individual training options, and keep track of which members are enrolled in given classes with Class_Members.
