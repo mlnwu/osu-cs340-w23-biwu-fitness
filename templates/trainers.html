@@ -4,16 +4,16 @@
 <nav id="navbar">
     <h2>BW</h2>
     <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="members.html">Members</a></li>
-        <li><a href="transactions.html">Transactions</a></li>
-        <li><a href="trainers.html">Trainers</a></li>
-        <li><a href="classes.html">Classes</a></li>
+        <li><a href="index">Home</a></li>
+        <li><a href="members">Members</a></li>
+        <li><a href="transactions">Transactions</a></li>
+        <li><a href="trainers">Trainers</a></li>
+        <li><a href="classes">Classes</a></li>
     </ul>
 </nav>
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <h1>Trainers</h1>
 </head>
 
@@ -47,8 +47,8 @@
             <td>Ex. Williams</td>
             <td>Ex. 5550000000</td>
             <td>Ex. sandrawilliams@example.com</td>
-            <td><button onclick="deleteTrainer({{trainer.id}})">Delete</button></td>
-            <td><button onclick="updateTrainer({{trainer.id}})">Update</button></td>
+            {# <td><button onclick="deleteTrainer({{trainer.id}})">Delete</button></td>
+            <td><button onclick="updateTrainer({{trainer.id}})">Update</button></td> #}
         </tr>
     </tbody>
 </table>
