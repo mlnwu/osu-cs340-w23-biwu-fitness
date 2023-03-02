@@ -47,17 +47,19 @@
         <th> </th>
     </thead>
     <tbody>
+        {% for member in members_data %}
         <tr>
-            <td>Ex. 1</td>
-            <td>Ex. Katherine</td>
-            <td>Ex. Gonzales</td>
-            <td>Ex. standard</td>
-            <td>Ex. 5551234567</td>
-            <td>Ex. katherinegonzales@example.com</td>
+            <td>{{member['member_id']}}</td>
+            <td>{{member['first_name']}}</td>
+            <td>{{member['last_name']}}</td>
+            <td>{{member['tier_type']}}</td>
+            <td>{{member['phone_number']}}</td>
+            <td>{{member['email']}}</td>
             
-            {# <td><button onclick="deleteMember({{member.id}})">Delete</button></td>
-            <td><button onclick="updateMember({{member.id}})">Update</button></td> #}
+            <td><button onclick="">Delete</button></td>
+            <td><button onclick="">Update</button></td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 
