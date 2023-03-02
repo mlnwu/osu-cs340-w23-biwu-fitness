@@ -40,7 +40,22 @@ def members():
         # render members.html with Members data
         return render_template("members.html", members_data=members_data)
 
-    if request.method == 'POST':
+    if request.method == "POST":
+        # get info from Add New Member form
+
+        if request.form:
+            # get form inputs
+            first_name = request.form["fname"]
+            last_name = request.form["lname"]
+            tier_type = request.form["tiertype"]
+            phone_number = request.form["phone"]
+            email = request.form["email"]
+            query_params = (first_name, last_name, tier_type, phone_number, email)
+
+            # write query (no NULL inputs allowed)
+            query = "INSERT INTO Members (first_name, last_name, tier_type, phone_number, email) VALUES (%s, %s, %s, %s, %s);"
+            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=query_params)
+
         return redirect(url_for('members'))
 
 @app.route('/trainers')
