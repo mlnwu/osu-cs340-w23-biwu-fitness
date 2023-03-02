@@ -1,9 +1,12 @@
 from flask import Flask, render_template, redirect, url_for
 import os
+import database.db_connector as db
 
 # Config
 
 app = Flask(__name__)
+
+db_connection = db.connect_to_database()
 
 # Routes
 
