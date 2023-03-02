@@ -58,6 +58,14 @@ def members():
 
         return redirect(url_for('members'))
 
+@app.route('/delete_member/<int:member_id>')
+def delete_member(member_id):
+    # query to delete member with passed id
+    query = "DELETE FROM Members WHERE member_id = '%s';"
+    cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(member_id,))
+
+    return redirect(url_for('members'))
+    
 @app.route('/trainers')
 def trainers():
     return render_template("trainers.html")
