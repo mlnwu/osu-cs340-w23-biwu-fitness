@@ -58,6 +58,35 @@ def members():
 
         return redirect(url_for('members'))
 
+@app.route('/edit_member/<int:member_id>', methods=["POST", "GET"])
+def edit_member(member_id):
+    if request.method == "GET":
+        # query to get info of member to be edited
+        info_query = "SELECT * FROM Members WHERE member_id = %s"
+        cursor = db.execute_query(db_connection=db_connection, query=info_query, query_params=(member_id,))
+        member_data = cursor.fetchall()
+
+        # render edit_member page with specific member info
+        return render_template("edit_member.html", member_data=member_data, name="hello")
+
+    if request.method == "POST":
+
+        if request.form:
+            # get form inputs
+            first_name = request.form["fname"]
+            last_name = request.form["lname"]
+            tier_type = request.form["tiertype"]
+            phone_number = request.form["phone"]
+            email = request.form["email"]
+            query_params = (first_name, last_name, tier_type, phone_number, email, member_id)
+
+            # write query (no NULL inputs allowed)
+            query = "UPDATE Members SET first_name = %s, last_name = %s, tier_type = %s, phone_number = %s, email = %s WHERE member_id = %s"
+            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=query_params)
+        
+        return redirect(url_for('members'))
+    
+
 @app.route('/delete_member/<int:member_id>')
 def delete_member(member_id):
     # query to delete member with passed id

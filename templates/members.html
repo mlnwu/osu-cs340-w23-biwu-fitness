@@ -56,8 +56,8 @@
             <td>{{member['phone_number']}}</td>
             <td>{{member['email']}}</td>
             
-            <td><a href="delete_member/{{member.member_id}}">Delete</button></td>
-            <td><button onclick="">Update</button></td>
+            <td><a href="delete_member/{{member.member_id}}" class="button">Delete</td>
+            <td><a href="edit_member/{{member.member_id}}" class="button">Update</td>
         </tr>
         {% endfor %}
     </tbody>
