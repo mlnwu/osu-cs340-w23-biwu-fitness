@@ -4,17 +4,17 @@
 <nav id="navbar">
     <h2>BW</h2>
     <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="members.html">Members</a></li>
-        <li><a href="transactions.html">Transactions</a></li>
-        <li><a href="trainers.html">Trainers</a></li>
-        <li><a href="classes.html">Classes</a></li>
+        <li><a href="index">Home</a></li>
+        <li><a href="members">Members</a></li>
+        <li><a href="transactions">Transactions</a></li>
+        <li><a href="trainers">Trainers</a></li>
+        <li><a href="classes">Classes</a></li>
     </ul>
 </nav>
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <h1 class="h-primary">Members</h1>
 </head>
 
@@ -24,8 +24,8 @@
         First name:<span class="required">*</span><br><input type="text" name="fname"><br><br>
         Last name: <span class="required">*</span><br><input type="text" name="lname"><br><br>
         Tier Type: <span class="required">*</span><br><select name="tiertype">
-            <option value="{{tier.type}}">Standard</option>
-            <option value="{{tier.type}}">Premium</option>
+            <option value="standard">Standard</option>
+            <option value="premium">Premium</option>
         </select><br><br>
         Phone number: <span class="required">*</span><br><input type="text" name="phone"><br><br>
         Email: <span class="required">*</span><br><input type="text" name="email"><br><br>
@@ -47,16 +47,19 @@
         <th> </th>
     </thead>
     <tbody>
+        {% for member in members_data %}
         <tr>
-            <td>Ex. 1</td>
-            <td>Ex. Katherine</td>
-            <td>Ex. Gonzales</td>
-            <td>Ex. standard</td>
-            <td>Ex. 5551234567</td>
-            <td>Ex. katherinegonzales@example.com</td>
-            <td><button onclick="deleteMember({{member.id}})">Delete</button></td>
-            <td><button onclick="updateMember({{member.id}})">Update</button></td>
+            <td>{{member['member_id']}}</td>
+            <td>{{member['first_name']}}</td>
+            <td>{{member['last_name']}}</td>
+            <td>{{member['tier_type']}}</td>
+            <td>{{member['phone_number']}}</td>
+            <td>{{member['email']}}</td>
+            
+            <td><a href="delete_member/{{member.member_id}}" class="button">Delete</td>
+            <td><a href="edit_member/{{member.member_id}}" class="button">Update</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 

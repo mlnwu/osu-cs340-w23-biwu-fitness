@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<nav id="navbar">
+    <h2>BW</h2>
+    <ul>
+        <li><a href="../index">Home</a></li>
+        <li><a href="../members">Members</a></li>
+        <li><a href="../transactions">Transactions</a></li>
+        <li><a href="../trainers">Trainers</a></li>
+        <li><a href="../classes">Classes</a></li>
+    </ul>
+</nav>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <h1 class="h-primary">Members</h1>
+</head>
+
+{% for member in member_data %}
+<h3>Edit Existing Member: #{{member['member_id']}}</h3>
+<form id="editmember" action="/edit_member/{{member['member_id']}}" method="post">
+    <ul class="form-style-1">
+        First name:<span class="required">*</span><br><input type="text" name="fname" value={{member.first_name}}><br><br>
+        Last name: <span class="required">*</span><br><input type="text" name="lname" value="{{member.last_name}}"><br><br>
+        Tier Type: <span class="required">*</span><br><select name="tiertype" value="{{member.tier_type}}">
+            <option value="standard">Standard</option>
+            <option value="premium">Premium</option>
+        </select><br><br>
+        Phone number: <span class="required">*</span><br><input type="text" name="phone" value="{{member.phone_number}}"><br><br>
+        Email: <span class="required">*</span><br><input type="text" name="email" value="{{member.email}}"><br><br>
+        <input type="submit" value="Edit Member">
+    </ul>
+</form>
+{% endfor %}
+<br />
+
+<body>
+    <footer>
+        <div class="footer">
+            <p>Copyright &copy; Biwu Fitness All rights are reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
