@@ -7,13 +7,26 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_mysqldb import MySQL
 import os
-import database.db_connector as db
+from dotenv import load_dotenv, find_dotenv
+
+# load environment variables
+load_dotenv(find_dotenv())
+
+host = os.environ.get("340DBHOST")
+user = os.environ.get("340DBUSER")
+pwd = os.environ.get("340DBPW")
+db_name = os.environ.get("340DB")
 
 # Config
 
 app = Flask(__name__)
+app.config["MYSQL_HOST"] = host
+app.config["MYSQL_USER"] = user
+app.config["MYSQL_PASSWORD"] = pwd
+app.config["MYSQL_DB"] = db_name
+app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
-db_connection = db.connect_to_database()
+mysql = MySQL(app)
 
 # Routes
 
@@ -34,7 +47,8 @@ def members():
     if request.method == "GET":
         # mySQL query to get all members
         query = "SELECT * FROM Members"
-        cursor = db.execute_query(db_connection=db_connection, query=query)
+        cursor = mysql.connection.cursor()
+        cursor.execute(query)
         members_data = cursor.fetchall()
 
         # render members.html with Members data
@@ -54,7 +68,9 @@ def members():
 
             # write query (no NULL inputs allowed)
             query = "INSERT INTO Members (first_name, last_name, tier_type, phone_number, email) VALUES (%s, %s, %s, %s, %s);"
-            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=query_params)
+            cursor = mysql.connection.cursor()
+            cursor.execute(query, query_params)
+            mysql.connection.commit()
 
         return redirect(url_for('members'))
 
@@ -63,7 +79,8 @@ def edit_member(member_id):
     if request.method == "GET":
         # query to get info of member to be edited
         info_query = "SELECT * FROM Members WHERE member_id = %s"
-        cursor = db.execute_query(db_connection=db_connection, query=info_query, query_params=(member_id,))
+        cursor = mysql.connection.cursor()
+        cursor.execute(query, (member_id,))
         member_data = cursor.fetchall()
 
         # render edit_member page with specific member info
@@ -82,7 +99,9 @@ def edit_member(member_id):
 
             # write query (no NULL inputs allowed)
             query = "UPDATE Members SET first_name = %s, last_name = %s, tier_type = %s, phone_number = %s, email = %s WHERE member_id = %s"
-            cursor = db.execute_query(db_connection=db_connection, query=query, query_params=query_params)
+            cursor = mysql.connection.cursor()
+            cursor.execute(query, query_params)
+            mysql.connection.commit()
         
         return redirect(url_for('members'))
     
@@ -91,7 +110,9 @@ def edit_member(member_id):
 def delete_member(member_id):
     # query to delete member with passed id
     query = "DELETE FROM Members WHERE member_id = '%s';"
-    cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(member_id,))
+    cursor = mysql.connection.cursor()
+    cursor.execute(query, (member_id,))
+    mysql.connection.commit()
 
     return redirect(url_for('members'))
     
