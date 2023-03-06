@@ -80,7 +80,7 @@ def edit_member(member_id):
         # query to get info of member to be edited
         info_query = "SELECT * FROM Members WHERE member_id = %s"
         cursor = mysql.connection.cursor()
-        cursor.execute(query, (member_id,))
+        cursor.execute(info_query, (member_id,))
         member_data = cursor.fetchall()
 
         # render edit_member page with specific member info
