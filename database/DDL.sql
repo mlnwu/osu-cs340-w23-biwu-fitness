@@ -22,9 +22,11 @@ CREATE OR REPLACE TABLE Members(
 
 CREATE OR REPLACE TABLE Transactions(
     transaction_id int(10) AUTO_INCREMENT UNIQUE NOT NULL,
+    members_member_id int(10) NOT NULL,
     transaction_amount decimal(15,2) NOT NULL,
     transaction_date DATE NOT NULL,
-    PRIMARY KEY (transaction_id)
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (members_member_id) REFERENCES Members(member_id) ON DELETE CASCADE
 );
 
 CREATE OR REPLACE TABLE Members_has_Transactions(

@@ -18,14 +18,32 @@
 </head>
 
 <h3>Record a New Membership Transaction</h3>
-<form id="addtransaction" action="/memberships" method="post">
+<form id="addtransaction" action="/transactions" method="post">
     <ul class="form-style-1">
+        Member ID: <span class="required">*</span><br><select name="memberid" id="memberid">
+            <option value="">Select Member ID</option>
+        </select><br><br>
         Transaction Amount: <span class="required">*</span><br><input type="number" name="tamount"><br><br>
         Transaction Date: <span class="required">*</span><br><input type="date" name="tdate"><br><br>
         <input type="submit" value="Record Transaction">
     </ul>
 </form>
 <br />
+
+<script>
+    const memberDropdown = document.getElementById("memberid");
+    fetch("/get_members_id")  
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(member => {
+          const option = document.createElement("option");
+          option.value = member;
+          option.text = member;
+          memberDropdown.appendChild(option);
+        });
+      });
+  </script>
+  
 
 <h3>Transaction Details</h3>
 <table>
@@ -35,15 +53,15 @@
         <th>Transaction Date</th>
     </thead>
     <tbody>
+        {% for transaction in transactions_data %}
         <tr>
-            <td>Ex. 1</td>
-            <td>Ex. 40.00</td>
-            <td>Ex. 2022-07-01</td>
+            <td>{{transaction['transaction_id']}}</td>
+            <td>{{transaction['transaction_amount']}}</td>
+            <td>{{transaction['transaction_date']}}</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
-
-<br>
 
 <h3>Membership Transaction History</h3>
 <table>
@@ -52,10 +70,12 @@
         <th>Member ID</th>
     </thead>
     <tbody>
+        {% for transaction in membership_transaction_data %}
         <tr>
-            <td>Ex. 1</td>
-            <td>Ex. 1</td>
+            <td>{{transaction['transactions_transaction_id']}}</td>
+            <td>{{transaction['members_member_id']}}</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 

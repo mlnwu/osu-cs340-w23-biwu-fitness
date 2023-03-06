@@ -41,15 +41,18 @@
         <th> </th>
     </thead>
     <tbody>
+        {% for trainer in trainer_data %}
         <tr>
-            <td>Ex. 1</td>
-            <td>Ex. Sandra</td>
-            <td>Ex. Williams</td>
-            <td>Ex. 5550000000</td>
-            <td>Ex. sandrawilliams@example.com</td>
-            <td><button onclick="">Delete</button></td>
-            <td><button onclick="">Update</button></td>
+            <td>{{trainer['trainer_id']}}</td>
+            <td>{{trainer['first_name']}}</td>
+            <td>{{trainer['last_name']}}</td>
+            <td>{{trainer['phone_number']}}</td>
+            <td>{{trainer['email']}}</td>
+            
+            <td><a href="delete_trainer/{{trainer.trainer_id}}" class="button">Delete</td>
+            <td><a href="edit_trainer/{{trainer.trainer_id}}" class="button">Update</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 

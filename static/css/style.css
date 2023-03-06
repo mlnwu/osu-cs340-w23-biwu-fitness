@@ -55,7 +55,10 @@ body {
     position: relative;
 }
 
-table,
+table {
+    margin-bottom: 75px;
+}
+
 th,
 td {
     box-sizing: border-box;
