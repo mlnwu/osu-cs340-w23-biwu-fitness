@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<nav id="navbar">
+    <h2>BW</h2>
+    <ul>
+        <li><a href="index">Home</a></li>
+        <li><a href="trainers">trainers</a></li>
+        <li><a href="transactions">Transactions</a></li>
+        <li><a href="trainers">Trainers</a></li>
+        <li><a href="classes">Classes</a></li>
+    </ul>
+</nav>
+
+<head>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <h1>Trainers</h1>
+</head>
+
+{% for trainer in trainer_data %}
+<h3>Edit Existing Trainer: #{{trainer['trainer_id']}}</h3>
+<form id="edittrainer" action="/edit_trainer/{{trainer['trainer_id']}}" method="post">
+    <ul class="form-style-1">
+        First name:<span class="required">*</span><br><input type="text" name="fname" value={{trainer.first_name}}><br><br>
+        Last name: <span class="required">*</span><br><input type="text" name="lname" value="{{trainer.last_name}}"><br><br>
+        Phone number: <span class="required">*</span><br><input type="text" name="phone" value="{{trainer.phone_number}}"><br><br>
+        Email: <span class="required">*</span><br><input type="text" name="email" value="{{trainer.email}}"><br><br>
+        <input type="submit" value="Edit Trainer">
+    </ul>
+</form>
+{% endfor %}
+
+<body>
+    <footer>
+        <div class="footer">
+            <p>Copyright &copy; Biwu Fitness All rights are reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
