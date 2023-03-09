@@ -20,8 +20,8 @@
 <h3>Record a New Membership Transaction</h3>
 <form id="addtransaction" action="/transactions" method="post">
     <ul class="form-style-1">
-        Member ID: <span class="required">*</span><br><select name="memberid" id="memberid">
-            <option value="">Select Member ID</option>
+        Member: <span class="required">*</span><br><select name="membername" id="membername">
+            <option value="">Select Member</option>
         </select><br><br>
         Transaction Amount: <span class="required">*</span><br><input type="number" name="tamount"><br><br>
         Transaction Date: <span class="required">*</span><br><input type="date" name="tdate"><br><br>
@@ -31,14 +31,14 @@
 <br />
 
 <script>
-    const memberDropdown = document.getElementById("memberid");
-    fetch("/get_members_id")  
+    const memberDropdown = document.getElementById("membername");
+    fetch("/get_member_names")  
       .then(response => response.json())
       .then(data => {
         data.forEach(member => {
           const option = document.createElement("option");
-          option.value = member;
-          option.text = member;
+          option.value = member[0]; // member_id
+          option.text = member[1];  // member first and last name
           memberDropdown.appendChild(option);
         });
       });

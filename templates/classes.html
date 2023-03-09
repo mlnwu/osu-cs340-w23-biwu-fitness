@@ -17,20 +17,12 @@
     <h1>Classes</h1>
 </head>
 
-<h3>Add a Class:</h3>
+<h3>Add a New Class:</h3>
 <form id="addclass" action="/classes" method="post">
     <ul class="form-style-1">
-        Class Type: <span class="required">*</span><br><select name="classtype">
-            <option value="{{classtype}}">Select Class Type</option>
-            <option value="{{classtype}}">Weight Training</option>
-            <option value="{{classtype}}">Cardio</option>
-            <option value="{{classtype}}">Yoga</option>
-        </select><br><br>
-        Trainer ID: <br><select name="trainerid">
-            <option value="{{trainerid}}">Select Trainer ID</option>
-            <option value="{{trainerid}}">1</option>
-            <option value="{{trainerid}}">2</option>
-            <option value="{{trainerid}}">3</option>
+        Class Type: <span class="required">*</span><br><input type="text" name="classtype"><br><br>
+        Trainer: <br><select name="trainername" id="trainername">
+            <option value="">Select Trainer</option>
         </select><br><br>
         Days:<span class="required">*</span>
     </ul>
@@ -57,6 +49,20 @@
     </ul>
 </form>
 <br />
+
+<script>
+    const trainerDropdown = document.getElementById("trainername");
+    fetch("/get_trainer_names")
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(trainer => {
+                const option = document.createElement("option");
+                option.value = trainer[0];  // trainer_id
+                option.text = trainer[1];   // trainer first and last name
+                trainerDropdown.appendChild(option);
+            })
+        })
+</script>
 
 <h3>Class Schedule:</h3>
 <table>

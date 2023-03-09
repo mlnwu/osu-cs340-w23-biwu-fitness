@@ -192,19 +192,33 @@ def delete_trainer(trainer_id):
     return redirect(url_for('trainers'))
 
 # dynamically populates dropdown menu for member ids
-@app.route('/get_members_id')
-def get_member_ids():
-    # MySQL query to fetch all member IDs from Members table
-    query = "SELECT member_id FROM Members;"
+@app.route('/get_member_names')
+def get_member_names():
+    # MySQL query to fetch all member ids and names from Members table
+    query = "SELECT member_id, first_name, last_name FROM Members;"
     cursor = mysql.connection.cursor()
     cursor.execute(query)
     result = cursor.fetchall()
 
-    # extract member IDs from the query result
-    member_ids = [row["member_id"] for row in result]
+    # extract member ids and names from the query result
+    member_names = [[row["member_id"], row["first_name"] + " " + row["last_name"]] for row in result]
+    print(member_names)
+    # return member ids and names in JSON format
+    return jsonify(member_names)
 
-    # return member IDs in JSON format
-    return jsonify(member_ids)
+# dynamically populates dropdown menu for trainer names
+@app.route('/get_trainer_names')
+def get_trainer_names():
+    # mySQL query to get all trainer ids and first and last names from Trainers table
+    query = "SELECT trainer_id, first_name, last_name FROM Trainers;"
+    cursor = mysql.connection.cursor()
+    cursor.execute(query)
+    result = cursor.fetchall()
+
+    # extract trainer ids and names from result
+    trainer_names = [[row["trainer_id"], row["first_name"] + " " + row["last_name"]] for row in result]
+    # return trainer ids and names in JSON format
+    return jsonify(trainer_names)
 
 @app.route('/transactions', methods=["POST", "GET"])
 def transactions():
@@ -226,7 +240,7 @@ def transactions():
 
     if request.method == "POST":
         # get info from Record a New Membership Transaction form
-        member_id = request.form["memberid"]
+        member_id = request.form["membername"]
         transaction_amount = request.form["tamount"]
         transaction_date = request.form["tdate"]
 
