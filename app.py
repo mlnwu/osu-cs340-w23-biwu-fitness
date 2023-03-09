@@ -40,7 +40,7 @@ def index():
 def root():
     return redirect(url_for('index'))
 
-@app.route('/classes')
+@app.route('/classes', methods=["POST", "GET"])
 def classes():
     if request.method == "GET":
         # mySQL query to get all classes
@@ -48,12 +48,29 @@ def classes():
         cursor = mysql.connection.cursor()
         cursor.execute(query)
         classes_data = cursor.fetchall()
-        print(classes_data)
 
         # render classes.html with Classes data
         return render_template("classes.html", classes_data=classes_data)
 
-    return render_template("classes.html")
+    if request.method == "POST":
+        # get info from Add New Class form
+
+        if request.form:
+            # get form inputs
+            class_type = request.form["classtype"]
+            trainer_id = request.form["trainername"]
+            day_scheduled = request.form["weekday"]
+            start_time = request.form["starttime"]
+            end_time = request.form["endtime"]
+            query_params = (class_type, trainer_id, day_scheduled, start_time, end_time)
+
+            # write query
+            query = "INSERT INTO Classes (class_type, trainer_id, day_scheduled, start_time, end_time) VALUES (%s, %s, %s, %s, %s);"
+            cursor = mysql.connection.cursor()
+            cursor.execute(query, query_params)
+            mysql.connection.commit()
+
+            return redirect(url_for('classes'))
 
 @app.route('/members', methods=["POST", "GET"])
 def members():
