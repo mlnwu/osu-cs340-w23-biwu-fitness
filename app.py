@@ -72,6 +72,39 @@ def classes():
 
             return redirect(url_for('classes'))
 
+@app.route('/edit_class/<int:class_id>', methods=["POST", "GET"])
+def edit_class(class_id):
+    if request.method == "GET":
+        # query to get info of class to be edited
+        query = "SELECT * FROM Classes WHERE class_id = %s"
+        cursor = mysql.connection.cursor()
+        cursor.execute(query, (class_id,))
+        class_data = cursor.fetchall()
+
+        # render edit_class page with specific member info
+        return render_template("edit_class.html", class_data=class_data, name="hello")
+
+    if request.method == "POST":
+
+        if request.form:
+            # get form inputs
+            class_type = request.form["classtype"]
+            trainer_id = request.form["trainername"]
+            day_scheduled = request.form["weekday"]
+            start_time = request.form["starttime"]
+            end_time = request.form["endtime"]
+            query_params = (class_type, trainer_id, day_scheduled, start_time, end_time, class_id)
+
+            print(query_params)
+            # write query (no NULL inputs allowed)
+            query = "UPDATE Classes SET class_type = %s, trainer_id = %s, day_scheduled = %s, start_time = %s, end_time = %s WHERE class_id = %s"
+            cursor = mysql.connection.cursor()
+            cursor.execute(query, query_params)
+            mysql.connection.commit()
+        
+        return redirect(url_for('classes'))
+    
+
 @app.route('/delete_class/<int:class_id>')
 def delete_class(class_id):
     # query to delete class with passed id

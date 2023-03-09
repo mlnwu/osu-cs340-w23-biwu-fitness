@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<nav id="navbar">
+    <h2>BW</h2>
+    <ul>
+        <li><a href="../index">Home</a></li>
+        <li><a href="../members">Members</a></li>
+        <li><a href="../transactions">Transactions</a></li>
+        <li><a href="../trainers">Trainers</a></li>
+        <li><a href="../classes">Classes</a></li>
+    </ul>
+</nav>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <h1 class="h-primary">Classes</h1>
+</head>
+
+{% for biwu_class in class_data %}
+<h3>Edit Existing Class: #{{biwu_class['class_id']}}</h3>
+<form id="editclass" action="/edit_class/{{biwu_class['class_id']}}" method="post">
+    <ul class="form-style-1">
+        {# TODO: fix the bug where only the first word of the class_type string autofills #}
+        Class type:<span class="required">*</span><br><input type="text" name="classtype" value={{biwu_class.class_type}}><br><br>
+        {# TODO: select existing trainer by default #}
+        Trainer: <br><select name="trainername" id="trainername">
+            <option value="">Select Trainer</option>
+        </select><br><br>
+        Day:<span class="required">*</span>
+    </ul>
+    <div class="weekDays-selector">
+        {# TODO: check existing day scheduled by default instead of Monday #}
+        <input type="radio" id="weekday-mon" class="weekday" name="weekday" value="Monday" checked/>
+        <label for="weekday-mon">Mon</label>
+        <input type="radio" id="weekday-tue" class="weekday" name="weekday" value="Tuesday"/>
+        <label for="weekday-tue">Tue</label>
+        <input type="radio" id="weekday-wed" class="weekday" name="weekday" value="Wednesday"/>
+        <label for="weekday-wed">Wed</label>
+        <input type="radio" id="weekday-thu" class="weekday" name="weekday" value="Thursday"/>
+        <label for="weekday-thu">Thu</label>
+        <input type="radio" id="weekday-fri" class="weekday" name="weekday" value="Friday"/>
+        <label for="weekday-fri">Fri</label>
+        <input type="radio" id="weekday-sat" class="weekday" name="weekday" value="Saturday"/>
+        <label for="weekday-sat">Sat</label>
+        <input type="radio" id="weekday-sun" class="weekday" name="weekday" value="Sunday"/>
+        <label for="weekday-sun">Sun</label>
+    </div>
+    <br><br>
+        Start Time:<span class="required">*</span> <br><input type="time" name="starttime" value={{biwu_class.start_time}}><br><br>
+        End Time:<span class="required">*</span> <br><input type="time" name="endtime" value={{biwu_class.end_time}}><br><br>
+        <input type="submit" value="Edit Class">
+    </ul>
+</form>
+{% endfor %}
+<br />
+
+<script>
+    const trainerDropdown = document.getElementById("trainername");
+    fetch("/get_trainer_names")
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(trainer => {
+                const option = document.createElement("option");
+                option.value = trainer[0];  // trainer_id
+                option.text = trainer[1];   // trainer first and last name
+                trainerDropdown.appendChild(option);
+            })
+        })
+</script>
+
+<body>
+    <footer>
+        <div class="footer">
+            <p>Copyright &copy; Biwu Fitness All rights are reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
