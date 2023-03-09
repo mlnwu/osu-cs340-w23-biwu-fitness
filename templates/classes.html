@@ -24,22 +24,22 @@
         Trainer: <br><select name="trainername" id="trainername">
             <option value="">Select Trainer</option>
         </select><br><br>
-        Days:<span class="required">*</span>
+        Day:<span class="required">*</span>
     </ul>
     <div class="weekDays-selector">
-        <input type="checkbox" id="weekday-mon" class="weekday" />
+        <input type="radio" id="weekday-mon" class="weekday" name="weekday" value="Monday"/>
         <label for="weekday-mon">Mon</label>
-        <input type="checkbox" id="weekday-tue" class="weekday" />
+        <input type="radio" id="weekday-tue" class="weekday" name="weekday" value="Tuesday"/>
         <label for="weekday-tue">Tue</label>
-        <input type="checkbox" id="weekday-wed" class="weekday" />
+        <input type="radio" id="weekday-wed" class="weekday" name="weekday" value="Wednesday"/>
         <label for="weekday-wed">Wed</label>
-        <input type="checkbox" id="weekday-thu" class="weekday" />
+        <input type="radio" id="weekday-thu" class="weekday" name="weekday" value="Thursday"/>
         <label for="weekday-thu">Thu</label>
-        <input type="checkbox" id="weekday-fri" class="weekday" />
+        <input type="radio" id="weekday-fri" class="weekday" name="weekday" value="Friday"/>
         <label for="weekday-fri">Fri</label>
-        <input type="checkbox" id="weekday-sat" class="weekday" />
+        <input type="radio" id="weekday-sat" class="weekday" name="weekday" value="Saturday"/>
         <label for="weekday-sat">Sat</label>
-        <input type="checkbox" id="weekday-sun" class="weekday" />
+        <input type="radio" id="weekday-sun" class="weekday" name="weekday" value="Sunday"/>
         <label for="weekday-sun">Sun</label>
     </div>
     <ul class="form-style-1">
@@ -77,17 +77,18 @@
         <th> </th>
     </thead>
     <tbody>
+        {% for biwu_class in classes_data %}
         <tr>
-            <td>Ex. 1</td>
-            <td>Ex. 1</td>
-            <td>Ex. Weight Training</td>
-            <td>Ex. Mon, Wed, Fri</td>
-            <td>Ex. 14:30:00</td>
-            <td>Ex. 15:30:00</td>
+            <td>{{biwu_class['class_id']}}</td>
+            <td>{{biwu_class['trainer_id']}}</td>
+            <td>{{biwu_class['class_type']}}</td>
+            <td>{{biwu_class['day_scheduled']}}</td>
+            <td>{{biwu_class['start_time']}}</td>
+            <td>{{biwu_class['end_time']}}</td>
             <td><button onclick="">Delete</button></td>
             <td><button onclick="">Update</button></td>
-            
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 

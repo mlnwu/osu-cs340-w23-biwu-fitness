@@ -42,6 +42,17 @@ def root():
 
 @app.route('/classes')
 def classes():
+    if request.method == "GET":
+        # mySQL query to get all classes
+        query = "SELECT * FROM Classes"
+        cursor = mysql.connection.cursor()
+        cursor.execute(query)
+        classes_data = cursor.fetchall()
+        print(classes_data)
+
+        # render classes.html with Classes data
+        return render_template("classes.html", classes_data=classes_data)
+
     return render_template("classes.html")
 
 @app.route('/members', methods=["POST", "GET"])
