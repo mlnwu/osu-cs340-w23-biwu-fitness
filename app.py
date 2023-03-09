@@ -72,6 +72,16 @@ def classes():
 
             return redirect(url_for('classes'))
 
+@app.route('/delete_class/<int:class_id>')
+def delete_class(class_id):
+    # query to delete class with passed id
+    query = "DELETE FROM Classes WHERE class_id = '%s';"
+    cursor = mysql.connection.cursor()
+    cursor.execute(query, (class_id,))
+    mysql.connection.commit()
+
+    return redirect(url_for('classes'))
+
 @app.route('/members', methods=["POST", "GET"])
 def members():
     if request.method == "GET":
