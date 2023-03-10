@@ -20,31 +20,31 @@
 <h3>Add a New Class:</h3>
 <form id="addclass" action="/classes" method="post">
     <ul class="form-style-1">
-        Class Type: <span class="required">*</span><br><input type="text" name="classtype"><br><br>
-        Trainer: <br><select name="trainername" id="trainername">
+        Class Type: <span class="required">*</span><br><input type="text" name="classtype" required><br><br>
+        Trainer: <br><select name="trainername" id="trainername" >
             <option value="">Select Trainer</option>
         </select><br><br>
-        Day:<span class="required">*</span>
+        Day:<span class="required" required>*</span>
     </ul>
-    <div class="weekDays-selector">
-        <input type="radio" id="weekday-mon" class="weekday" name="weekday" value="Monday"/>
+    <div class="weekDays-selector" required>
+        <input type="radio" id="weekday-mon" class="weekday" name="weekday" value="Monday" required/>
         <label for="weekday-mon">Mon</label>
-        <input type="radio" id="weekday-tue" class="weekday" name="weekday" value="Tuesday"/>
+        <input type="radio" id="weekday-tue" class="weekday" name="weekday" value="Tuesday" required/>
         <label for="weekday-tue">Tue</label>
-        <input type="radio" id="weekday-wed" class="weekday" name="weekday" value="Wednesday"/>
+        <input type="radio" id="weekday-wed" class="weekday" name="weekday" value="Wednesday" required/>
         <label for="weekday-wed">Wed</label>
-        <input type="radio" id="weekday-thu" class="weekday" name="weekday" value="Thursday"/>
+        <input type="radio" id="weekday-thu" class="weekday" name="weekday" value="Thursday" required/>
         <label for="weekday-thu">Thu</label>
-        <input type="radio" id="weekday-fri" class="weekday" name="weekday" value="Friday"/>
+        <input type="radio" id="weekday-fri" class="weekday" name="weekday" value="Friday" required/>
         <label for="weekday-fri">Fri</label>
-        <input type="radio" id="weekday-sat" class="weekday" name="weekday" value="Saturday"/>
+        <input type="radio" id="weekday-sat" class="weekday" name="weekday" value="Saturday" required/>
         <label for="weekday-sat">Sat</label>
-        <input type="radio" id="weekday-sun" class="weekday" name="weekday" value="Sunday"/>
+        <input type="radio" id="weekday-sun" class="weekday" name="weekday" value="Sunday" required/>
         <label for="weekday-sun">Sun</label>
     </div>
     <ul class="form-style-1">
-        Start Time:<span class="required">*</span> <br><input type="time" name="starttime"><br><br>
-        End Time:<span class="required">*</span> <br><input type="time" name="endtime"><br><br>
+        Start Time:<span class="required">*</span> <br><input type="time" name="starttime" required><br><br>
+        End Time:<span class="required">*</span> <br><input type="time" name="endtime" required><br><br>
         <input type="submit" value="Add Class">
     </ul>
 </form>

@@ -23,12 +23,12 @@
 <form id="editclass" action="/edit_class/{{biwu_class['class_id']}}" method="post">
     <ul class="form-style-1">
         {# TODO: fix the bug where only the first word of the class_type string autofills #}
-        Class type:<span class="required">*</span><br><input type="text" name="classtype" value={{biwu_class.class_type}}><br><br>
+        Class Type:<span class="required">*</span><br><input type="text" name="classtype" value={{biwu_class.class_type}} required><br><br>
         {# TODO: select existing trainer by default #}
         Trainer: <br><select name="trainername" id="trainername">
             <option value="">Select Trainer</option>
         </select><br><br>
-        Day:<span class="required">*</span>
+        Day:<span class="required" required>*</span>
     </ul>
     <div class="weekDays-selector">
         {# TODO: check existing day scheduled by default instead of Monday #}
@@ -47,9 +47,9 @@
         <input type="radio" id="weekday-sun" class="weekday" name="weekday" value="Sunday"/>
         <label for="weekday-sun">Sun</label>
     </div>
-    <br><br>
-        Start Time:<span class="required">*</span> <br><input type="time" name="starttime" value={{biwu_class.start_time}}><br><br>
-        End Time:<span class="required">*</span> <br><input type="time" name="endtime" value={{biwu_class.end_time}}><br><br>
+    <ul class="form-style-1">
+        Start Time:<span class="required">*</span> <br><input type="time" name="starttime" value={{biwu_class.start_time}} required><br><br>
+        End Time:<span class="required">*</span> <br><input type="time" name="endtime" value={{biwu_class.end_time}} required><br><br>
         <input type="submit" value="Edit Class">
     </ul>
 </form>

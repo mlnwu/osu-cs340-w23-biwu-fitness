@@ -21,14 +21,14 @@
 <h3>Register a New Member</h3>
 <form id="addmember" action="/members" method="post">
     <ul class="form-style-1">
-        First name:<span class="required">*</span><br><input type="text" name="fname"><br><br>
-        Last name: <span class="required">*</span><br><input type="text" name="lname"><br><br>
-        Tier Type: <span class="required">*</span><br><select name="tiertype">
+        First name:<span class="required">*</span><br><input type="text" name="fname" required><br><br>
+        Last name: <span class="required">*</span><br><input type="text" name="lname" required><br><br>
+        Tier Type: <span class="required">*</span><br><select name="tiertype" required>
             <option value="standard">Standard</option>
             <option value="premium">Premium</option>
         </select><br><br>
-        Phone number: <span class="required">*</span><br><input type="text" name="phone"><br><br>
-        Email: <span class="required">*</span><br><input type="text" name="email"><br><br>
+        Phone number: <span class="required">*</span><br><input type="text" name="phone" pattern="^[0-9- ]+$" minlength="10" maxlength="10" required><br><br>
+        Email: <span class="required">*</span><br><input type="email" name="email" required><br><br>
         <input type="submit" value="Add New Member">
     </ul>
 </form>

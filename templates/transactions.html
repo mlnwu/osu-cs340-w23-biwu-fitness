@@ -20,11 +20,11 @@
 <h3>Record a New Membership Transaction</h3>
 <form id="addtransaction" action="/transactions" method="post">
     <ul class="form-style-1">
-        Member: <span class="required">*</span><br><select name="membername" id="membername">
+        Member: <span class="required">*</span><br><select name="membername" id="membername" required>
             <option value="">Select Member</option>
         </select><br><br>
-        Transaction Amount: <span class="required">*</span><br><input type="number" name="tamount"><br><br>
-        Transaction Date: <span class="required">*</span><br><input type="date" name="tdate"><br><br>
+        Transaction Amount: <span class="required">*</span><br><input type="number" name="tamount" step="0.01" min="0.01" required><br><br>
+        Transaction Date: <span class="required">*</span><br><input type="date" name="tdate" required><br><br>
         <input type="submit" value="Record Transaction">
     </ul>
 </form>

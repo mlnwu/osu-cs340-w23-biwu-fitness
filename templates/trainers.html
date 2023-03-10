@@ -20,10 +20,10 @@
 <h3>Register a New Trainer</h3>
 <form id="addtrainer" action="/trainers" method="post">
     <ul class="form-style-1">
-        First name: <span class="required">*</span><br><input type="text" name="fname"><br><br>
-        Last name: <span class="required">*</span><br><input type="text" name="lname"><br><br>
-        Phone number: <span class="required">*</span><br><input type="text" name="phone"><br><br>
-        Email: <span class="required">*</span><br><input type="text" name="email"><br><br>
+        First name: <span class="required">*</span><br><input type="text" name="fname" required><br><br>
+        Last name: <span class="required">*</span><br><input type="text" name="lname" required><br><br>
+        Phone number: <span class="required">*</span><br><input type="text" name="phone" pattern="^[0-9- ]+$" minlength="10" maxlength="10" required><br><br>
+        Email: <span class="required">*</span><br><input type="email" name="email" required><br><br>
         <input type="submit" value="Add New Trainer">
     </ul>
 </form>
