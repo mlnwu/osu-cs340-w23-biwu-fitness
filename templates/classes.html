@@ -68,7 +68,7 @@
 <table>
     <thead>
         <th>Class ID</th>
-        <th>Trainer ID</th>
+        <th>Trainer</th>
         <th>Class Type</th>
         <th>Days</th>
         <th>Start Time</th>
@@ -80,7 +80,7 @@
         {% for biwu_class in classes_data %}
         <tr>
             <td>{{biwu_class['class_id']}}</td>
-            <td>{{biwu_class['trainer_id']}}</td>
+            <td>{{biwu_class['first_name']}} {{biwu_class['last_name']}}</td>
             <td>{{biwu_class['class_type']}}</td>
             <td>{{biwu_class['day_scheduled']}}</td>
             <td>{{biwu_class['start_time']}}</td>
@@ -96,17 +96,16 @@
 <table>
     <thead>
         <th>Class ID</th>
-        <th>Member ID</th>
-        <th> </th>
-        <th> </th>
+        <th>Member</th>
     </thead>
     <tbody>
+        {% for class in class_registration_data %}
         <tr>
-            <td>Ex. 3</td>
-            <td>Ex. 1</td>
-            <td><button onclick="">Delete</button></td>
-            <td><button onclick="">Update</button></td>
+            <td>{{class['classes_class_id']}}</td>
+            <td>{{class['first_name']}} {{class['last_name']}}</td>
         </tr>
+        {% endfor %}
+
     </tbody>
 </table>
 

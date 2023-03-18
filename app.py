@@ -43,18 +43,35 @@ def root():
 @app.route('/classes', methods=["POST", "GET"])
 def classes():
     if request.method == "GET":
-        # mySQL query to get all classes
-        query = "SELECT * FROM Classes"
+        # mySQL query to get all classes with trainer names
+        query = "SELECT c.*, t.first_name, t.last_name FROM Classes c JOIN Trainers t ON c.trainer_id = t.trainer_id"
         cursor = mysql.connection.cursor()
         cursor.execute(query)
         classes_data = cursor.fetchall()
 
+        # mySQL query to get all membership transaction history with member names
+        query = """
+                SELECT TH.classes_class_id, M.first_name, M.last_name
+                FROM Classes_has_Members TH
+                JOIN Members M ON TH.members_member_id = M.member_id
+                """
+        cursor = mysql.connection.cursor()
+        cursor.execute(query)
+        class_registration_data = cursor.fetchall()
+
         # render classes.html with Classes data
-        return render_template("classes.html", classes_data=classes_data)
+        return render_template("classes.html", classes_data=classes_data,  class_registration_data=class_registration_data)
 
     if request.method == "POST":
-        # get info from Add New Class form
+        # get class_id of newly inserted class
+        class_id = cursor.lastrowid
 
+        query = "INSERT INTO Classes_has_Members (classes_class_id, members_member_id) VALUES (%s, %s)"
+        cursor = mysql.connection.cursor()
+        cursor.execute(query, (class_id, member_id))
+        mysql.connection.commit()
+
+        # get info from Add New Class form
         if request.form:
             # get form inputs
             class_type = request.form["classtype"]
@@ -273,7 +290,6 @@ def get_member_names():
 
     # extract member ids and names from the query result
     member_names = [[row["member_id"], row["first_name"] + " " + row["last_name"]] for row in result]
-    print(member_names)
     # return member ids and names in JSON format
     return jsonify(member_names)
 
@@ -300,8 +316,12 @@ def transactions():
         cursor.execute(query)
         transactions_data = cursor.fetchall()
 
-        # mySQL query to get all membership transaction history
-        query = "SELECT * FROM Members_has_Transactions"
+        # mySQL query to get all membership transaction history with member names
+        query = """
+                SELECT TH.transactions_transaction_id, M.first_name, M.last_name
+                FROM Members_has_Transactions TH
+                JOIN Members M ON TH.members_member_id = M.member_id
+                """
         cursor = mysql.connection.cursor()
         cursor.execute(query)
         membership_transaction_data = cursor.fetchall()
