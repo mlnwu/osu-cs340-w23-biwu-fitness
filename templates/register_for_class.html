@@ -37,8 +37,6 @@
                 <th>Days</th>
                 <th>Start Time</th>
                 <th>End Time</th>
-                <th> </th>
-                <th> </th>
             </thead>
             <tbody>
                 {% for biwu_class in classes_data %}
@@ -50,8 +48,6 @@
                     <td>{{biwu_class['day_scheduled']}}</td>
                     <td>{{biwu_class['start_time']}}</td>
                     <td>{{biwu_class['end_time']}}</td>
-                    <td><a href="delete_class/{{biwu_class.class_id}}" class="button">Delete</a></td>
-                    <td><a href="edit_class/{{biwu_class.class_id}}" class="button">Update</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
