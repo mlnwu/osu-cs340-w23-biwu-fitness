@@ -341,18 +341,36 @@ def transactions():
 @app.route('/register', methods=["POST", "GET"])
 def register():
     if request.method == "GET":
+        # mySQL query to get all classes with trainer names
+        query = "SELECT c.*, t.first_name, t.last_name FROM Classes c JOIN Trainers t ON c.trainer_id = t.trainer_id"
+        cursor = mysql.connection.cursor()
+        cursor.execute(query)
+        classes_data = cursor.fetchall()
+
         # mySQL query to get all members
         query = """
                 SELECT TH.classes_class_id, M.first_name, M.last_name
                 FROM Classes_has_Members TH
                 JOIN Members M ON TH.members_member_id = M.member_id
                 """
-        cursor = mysql.connection.cursor()
         cursor.execute(query)
         class_registration_data = cursor.fetchall()
 
-        # render members.html with Members data
-        return render_template("register_for_class.html", class_registration_data=class_registration_data)
+        # render register_for_class.html with Classes and Classes_has_Members data
+        return render_template("register_for_class.html", classes_data=classes_data, class_registration_data=class_registration_data)
+    
+    if request.method == "POST":
+        # get info from Register a Member for a Class form
+        member_id = request.form["membername"]
+        class_id = request.form["classid"]
+
+        # write query to insert class registration into Classes_has_Members table
+        query = "INSERT INTO Classes_has_Members (members_member_id, classes_class_id) VALUES (%s, %s)"
+        cursor = mysql.connection.cursor()
+        cursor.execute(query, (member_id, class_id))
+        mysql.connection.commit()
+
+        return redirect(url_for("register"))
 
 # Listener
 

@@ -16,8 +16,66 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../static/css/style.css">
-    <h1 class="h-primary">Register a Member for a Class</h1>
+    <h1 class="h-primary">Register</h1>
 </head>
+
+<h3>Register a Member for a Class:</h3>
+<form id="register" action="/register" method="post">
+    <ul class="form-style-1">
+        Member: <span class="required">*</span><br><select name="membername" id="membername" required>
+            <option value="">Select Member</option>
+        </select><br><br>
+    </ul>
+    <div class="class-selector" required>
+        <h3>Class Schedule:</h3>
+        <table>
+            <thead>
+                <th></th>
+                <th>Class ID</th>
+                <th>Trainer</th>
+                <th>Class Type</th>
+                <th>Days</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th> </th>
+                <th> </th>
+            </thead>
+            <tbody>
+                {% for biwu_class in classes_data %}
+                <tr>
+                    <td><input type="radio" id={{biwu_class['class_id']}} class="class-selector" name="classid" value={{biwu_class['class_id']}} required/></td>
+                    <td>{{biwu_class['class_id']}}</td>
+                    <td>{{biwu_class['first_name']}} {{biwu_class['last_name']}}</td>
+                    <td>{{biwu_class['class_type']}}</td>
+                    <td>{{biwu_class['day_scheduled']}}</td>
+                    <td>{{biwu_class['start_time']}}</td>
+                    <td>{{biwu_class['end_time']}}</td>
+                    <td><a href="delete_class/{{biwu_class.class_id}}" class="button">Delete</a></td>
+                    <td><a href="edit_class/{{biwu_class.class_id}}" class="button">Update</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <ul class="form-style-1">
+        <input type="submit" value="Register for a Class">
+    </ul>
+</form>
+<br />
+
+<script>
+    const memberDropdown = document.getElementById("membername");
+    fetch("/get_member_names")  
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(member => {
+          const option = document.createElement("option");
+          option.value = member[0]; // member_id
+          option.text = member[1];  // member first and last name
+          memberDropdown.appendChild(option);
+        });
+      });
+  </script>
 
 <h3>Class Registration Log:</h3>
 <table>
