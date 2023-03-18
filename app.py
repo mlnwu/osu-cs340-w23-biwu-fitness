@@ -52,18 +52,8 @@ def classes():
         cursor.execute(query)
         classes_data = cursor.fetchall()
 
-        # mySQL query to get all membership transaction history with member names
-        query = """
-                SELECT TH.classes_class_id, M.first_name, M.last_name
-                FROM Classes_has_Members TH
-                JOIN Members M ON TH.members_member_id = M.member_id
-                """
-        cursor = mysql.connection.cursor()
-        cursor.execute(query)
-        class_registration_data = cursor.fetchall()
-
         # render classes.html with Classes data
-        return render_template("classes.html", classes_data=classes_data,  class_registration_data=class_registration_data)
+        return render_template("classes.html", classes_data=classes_data)
 
     if request.method == "POST":
 
@@ -348,6 +338,21 @@ def transactions():
 
         return redirect(url_for("transactions"))
 
+@app.route('/register', methods=["POST", "GET"])
+def register():
+    if request.method == "GET":
+        # mySQL query to get all members
+        query = """
+                SELECT TH.classes_class_id, M.first_name, M.last_name
+                FROM Classes_has_Members TH
+                JOIN Members M ON TH.members_member_id = M.member_id
+                """
+        cursor = mysql.connection.cursor()
+        cursor.execute(query)
+        class_registration_data = cursor.fetchall()
+
+        # render members.html with Members data
+        return render_template("register_for_class.html", class_registration_data=class_registration_data)
 
 # Listener
 
