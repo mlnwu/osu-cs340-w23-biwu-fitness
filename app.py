@@ -42,6 +42,9 @@ def root():
 
 @app.route('/classes', methods=["POST", "GET"])
 def classes():
+
+    cursor = mysql.connection.cursor()
+
     if request.method == "GET":
         # mySQL query to get all classes with trainer names
         query = "SELECT c.*, t.first_name, t.last_name FROM Classes c JOIN Trainers t ON c.trainer_id = t.trainer_id"
@@ -63,13 +66,6 @@ def classes():
         return render_template("classes.html", classes_data=classes_data,  class_registration_data=class_registration_data)
 
     if request.method == "POST":
-        # get class_id of newly inserted class
-        class_id = cursor.lastrowid
-
-        query = "INSERT INTO Classes_has_Members (classes_class_id, members_member_id) VALUES (%s, %s)"
-        cursor = mysql.connection.cursor()
-        cursor.execute(query, (class_id, member_id))
-        mysql.connection.commit()
 
         # get info from Add New Class form
         if request.form:
@@ -356,5 +352,5 @@ def transactions():
 # Listener
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 29901))
+    port = int(os.environ.get('PORT', 29902))
     app.run(port=port)
