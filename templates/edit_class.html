@@ -62,12 +62,19 @@
     fetch("/get_trainer_names")
         .then(response => response.json())
         .then(data => {
+            const class_trainer_id = '{{trainer_id}}';
             data.forEach(trainer => {
                 const option = document.createElement("option");
                 option.value = trainer[0];  // trainer_id
                 option.text = trainer[1];   // trainer first and last name
                 trainerDropdown.appendChild(option);
             })
+            for (i=0; i < trainerDropdown.length; i++){
+                if(String(trainerDropdown[i].value) == class_trainer_id){
+                    trainerDropdown.selectedIndex = i;
+                    break;
+                }
+            }
         })
 </script>
 

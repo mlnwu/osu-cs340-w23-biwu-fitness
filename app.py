@@ -83,9 +83,10 @@ def edit_class(class_id):
         cursor = mysql.connection.cursor()
         cursor.execute(query, (class_id,))
         class_data = cursor.fetchall()
+        trainer_id = class_data[0]["trainer_id"]
 
         # render edit_class page with specific member info
-        return render_template("edit_class.html", class_data=class_data, name="hello")
+        return render_template("edit_class.html", class_data=class_data, trainer_id=trainer_id, name="hello")
 
     if request.method == "POST":
 
