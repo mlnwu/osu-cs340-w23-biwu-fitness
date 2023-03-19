@@ -7,57 +7,57 @@ Without an existing database backend, however, it is difficult for Biwu Fitness 
 
 ## Citations
 
-# app.py
-Scope: Module
-Date: 3/01/23
-Adapted from OSU 340 Ecampus Flask Starter App
+### app.py
+Scope: Module\
+Date: 3/01/23\
+Adapted from OSU 340 Ecampus Flask Starter App\
 Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py
 
-Scope: Function
-Date: 3/01/23
-Adapted from SQL Exercise: Employees including their first name of their manager
+Scope: Function\
+Date: 3/01/23\
+Adapted from SQL Exercise: Employees including their first name of their manager\
 Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py
 
-# wsgi.py
-Scope: Module
-Date: 3/01/23
-Adapted from OSU 340 Ecampus Flask Starter App
+### wsgi.py
+Scope: Module\
+Date: 3/01/23\
+Adapted from OSU 340 Ecampus Flask Starter App\
 Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py
 
-# style.css
-Scope: Function
-Date: 2/14/23
-Adapted from 10 CSS HTML Form Designs
-Source URL: https://www.sanwebe.com/2014/08/css-html-forms-designs 
+### style.css
+Scope: Function\
+Date: 2/14/23\
+Adapted from 10 CSS HTML Form Designs\
+Source URL: https://www.sanwebe.com/2014/08/css-html-forms-designs\ 
 
-Scope: Function
-Date: 2/14/23
-Adapted from CSS Horizontal Navigation Bar
+Scope: Function\
+Date: 2/14/23\
+Adapted from CSS Horizontal Navigation Bar\
 Source URL: https://www.w3schools.com/css/css_navbar_horizontal.asp
 
-# index.html, members.html, edit_member.html, transactions.html, trainers.html, edit_trainer.html, edit_class.html, register_for_class.html
-Scope: Module
-Date: 2/14/23
-Adapted from OSU 340 Ecampus Flask Starter App
-Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py
+### index.html, members.html, edit_member.html, transactions.html, trainers.html, edit_trainer.html, edit_class.html, register_for_class.html
+Scope: Module\
+Date: 2/14/23\
+Adapted from OSU 340 Ecampus Flask Starter App\
+Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py\
 
-Scope: Line
-Date: 2/14/23
-Adapted from CSS Horizontal Navigation Bar
+Scope: Line\
+Date: 2/14/23\
+Adapted from CSS Horizontal Navigation Bar\
 Source URL: https://www.w3schools.com/css/css_navbar_horizontal.asp
 
-# classes.html
-Scope: Module
-Date: 2/14/23
-Adapted from OSU 340 Ecampus Flask Starter App
-Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py
+### classes.html
+Scope: Module\
+Date: 2/14/23\
+Adapted from OSU 340 Ecampus Flask Starter App\
+Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py\
 
-Scope: Line
-Date: 2/14/23
-Adapted from CSS Horizontal Navigation Bar
-Source URL: https://www.w3schools.com/css/css_navbar_horizontal.asp
+Scope: Line\
+Date: 2/14/23\
+Adapted from CSS Horizontal Navigation Bar\
+Source URL: https://www.w3schools.com/css/css_navbar_horizontal.asp\
 
-Scope: Line
-Date: 2/24/23
-Adapted from Simple Checkbox Day of the Week Custom CSS
+Scope: Line\
+Date: 2/24/23\
+Adapted from Simple Checkbox Day of the Week Custom CSS\
 Source URL: https://codepen.io/steelwater/pen/BjeZQx
