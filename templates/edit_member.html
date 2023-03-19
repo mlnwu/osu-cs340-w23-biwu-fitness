@@ -25,7 +25,7 @@
     <ul class="form-style-1">
         First name:<span class="required">*</span><br><input type="text" name="fname" value="{{member.first_name}}" required><br><br>
         Last name: <span class="required">*</span><br><input type="text" name="lname" value="{{member.last_name}}" required><br><br>
-        Tier Type: <span class="required">*</span><br><select name="tiertype" value="{{member.tier_type}} required">
+        Tier Type: <span class="required">*</span><br><select id="tiertype" name="tiertype" value="{{member.tier_type}} required">
             <option value="standard">Standard</option>
             <option value="premium">Premium</option>
         </select><br><br>
@@ -36,6 +36,12 @@
 </form>
 {% endfor %}
 <br />
+
+<script>
+    tier_select = document.getElementById("tiertype");
+    tier_type = JSON.parse('{{member_data|tojson}}')[0].tier_type;
+    tier_type == "standard" ? tier_select.selectedIndex = 0 : tier_select.selectedIndex = 1;
+</script>
 
 <body>
     <footer>
