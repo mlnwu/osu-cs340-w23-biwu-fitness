@@ -26,7 +26,7 @@
         {# TODO: fix the bug where only the first word of the class_type string autofills #}
         Class Type:<span class="required">*</span><br><input type="text" name="classtype" value={{biwu_class.class_type}} required><br><br>
         {# TODO: select existing trainer by default #}
-        Trainer: <br><select name="trainername" id="trainername">
+        Trainer: <span class="required">*</span><br><br><select name="trainername" id="trainername" required>
             <option value="">Select Trainer</option>
         </select><br><br>
         Day:<span class="required" required>*</span>
