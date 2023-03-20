@@ -33,16 +33,13 @@ Source URL: https://www.w3schools.com/css/css_navbar_horizontal.asp -->
 <h3>Edit Existing Class: #{{biwu_class['class_id']}}</h3>
 <form id="editclass" action="/edit_class/{{biwu_class['class_id']}}" method="post">
     <ul class="form-style-1">
-        {# TODO: fix the bug where only the first word of the class_type string autofills #}
         Class Type:<span class="required">*</span><br><input type="text" name="classtype" value={{biwu_class.class_type}} required><br><br>
-        {# TODO: select existing trainer by default #}
         Trainer: <span class="required">*</span><br><br><select name="trainername" id="trainername" required>
             <option value="">Select Trainer</option>
         </select><br><br>
         Day:<span class="required" required>*</span>
     </ul>
     <div class="weekDays-selector">
-        {# TODO: check existing day scheduled by default instead of Monday #}
         <input type="radio" id="weekday-mon" class="weekday" name="weekday" value="Monday" checked/>
         <label for="weekday-mon">Mon</label>
         <input type="radio" id="weekday-tue" class="weekday" name="weekday" value="Tuesday"/>
