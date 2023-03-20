@@ -109,10 +109,10 @@ def edit_class(class_id):
 
             # write query
             if (trainer_id == "NULL"):
-                query_params = (class_type, day_scheduled, start_time, end_time)
-                query = "UPDATE Classes SET class_type = %s, day_scheduled = %s, start_time = %s, end_time = %s WHERE class_id = %s"
+                query_params = (class_type, day_scheduled, start_time, end_time, class_id)
+                query = "UPDATE Classes SET class_type = %s, trainer_id = NULL, day_scheduled = %s, start_time = %s, end_time = %s WHERE class_id = %s"
             else:
-                query_params = (class_type, trainer_id, day_scheduled, start_time, end_time)
+                query_params = (class_type, trainer_id, day_scheduled, start_time, end_time, class_id)
                 query = "UPDATE Classes SET class_type = %s, trainer_id = %s, day_scheduled = %s, start_time = %s, end_time = %s WHERE class_id = %s"
 
             cursor = mysql.connection.cursor()
