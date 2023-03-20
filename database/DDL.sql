@@ -114,7 +114,8 @@ INSERT INTO Classes(class_type, trainer_id, day_scheduled, start_time, end_time)
     VALUES
         ('weight training', (SELECT trainer_id FROM Trainers WHERE first_name = 'Sandra' AND last_name = 'Williams'), 'Monday', '14:30:00', '15:30:00'),
         ('cardio', (SELECT trainer_id FROM Trainers WHERE first_name = 'Garrett' AND last_name = 'Norton'), 'Saturday', '10:30:00', '12:00:00'),
-        ('yoga', (SELECT trainer_id FROM Trainers WHERE first_name = 'Julia' AND last_name = 'Fuertes'), 'Sunday', '08:30:00', '09:45:00');
+        ('yoga', (SELECT trainer_id FROM Trainers WHERE first_name = 'Julia' AND last_name = 'Fuertes'), 'Sunday', '08:30:00', '09:45:00'),
+        ('dance practice', NULL, 'Sunday', '08:30:00', '09:45:00');
 
 INSERT INTO Classes_has_Members(Classes_class_id, Members_member_id)
     VALUES
