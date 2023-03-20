@@ -1,7 +1,11 @@
-# Citation for the following code
-# -------------------------------
+# Scope: Module
 # Date: 3/01/23
 # Adapted from OSU 340 Ecampus Flask Starter App
+# Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py
+
+# Scope: Function
+# Date: 3/01/23
+# Adapted from SQL Exercise: Employees including their first name of their manager
 # Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/app.py
 
 from flask import Flask, render_template, redirect, url_for, request, jsonify
