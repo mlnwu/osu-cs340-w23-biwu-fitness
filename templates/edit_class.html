@@ -69,6 +69,13 @@
                 option.text = trainer[1];   // trainer first and last name
                 trainerDropdown.appendChild(option);
             })
+
+            // add null trainer option
+            const null_option = document.createElement("option");
+            null_option.value = "NULL";
+            null_option.text = "(No trainer)";
+            trainerDropdown.appendChild(null_option);
+
             for (i=0; i < trainerDropdown.length; i++){
                 if(String(trainerDropdown[i].value) == class_trainer_id){
                     trainerDropdown.selectedIndex = i;

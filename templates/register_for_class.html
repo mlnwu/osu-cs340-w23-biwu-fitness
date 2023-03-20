@@ -43,7 +43,11 @@
                 <tr>
                     <td><input type="radio" id={{biwu_class['class_id']}} class="class-selector" name="classid" value={{biwu_class['class_id']}} required/></td>
                     <td>{{biwu_class['class_id']}}</td>
+                    {% if biwu_class['first_name'] != None and biwu_class['last_name'] != None %}
                     <td>{{biwu_class['first_name']}} {{biwu_class['last_name']}}</td>
+                    {% else %}
+                    <td>(No trainer)</td>
+                    {% endif %}
                     <td>{{biwu_class['class_type']}}</td>
                     <td>{{biwu_class['day_scheduled']}}</td>
                     <td>{{biwu_class['start_time']}}</td>

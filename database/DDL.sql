@@ -48,7 +48,7 @@ CREATE OR REPLACE TABLE Trainers(
 CREATE OR REPLACE TABLE Classes(
     class_id int(10) AUTO_INCREMENT UNIQUE NOT NULL,
     class_type varchar(50) NOT NULL,
-    trainer_id int(10),
+    trainer_id int(10) NULL,
     day_scheduled ENUM('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') NOT NULL,
     start_time TIME NOT NULL,
     end_time TIME NOT NULL,

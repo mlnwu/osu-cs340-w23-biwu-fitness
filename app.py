@@ -47,7 +47,7 @@ def classes():
 
     if request.method == "GET":
         # mySQL query to get all classes with trainer names
-        query = "SELECT c.*, t.first_name, t.last_name FROM Classes c JOIN Trainers t ON c.trainer_id = t.trainer_id"
+        query = "SELECT c.*, t.first_name, t.last_name FROM Classes c LEFT OUTER JOIN Trainers t ON c.trainer_id = t.trainer_id"
         cursor = mysql.connection.cursor()
         cursor.execute(query)
         classes_data = cursor.fetchall()
@@ -65,10 +65,15 @@ def classes():
             day_scheduled = request.form["weekday"]
             start_time = request.form["starttime"]
             end_time = request.form["endtime"]
-            query_params = (class_type, trainer_id, day_scheduled, start_time, end_time)
 
             # write query
-            query = "INSERT INTO Classes (class_type, trainer_id, day_scheduled, start_time, end_time) VALUES (%s, %s, %s, %s, %s);"
+            if (trainer_id == "NULL"):
+                query_params = (class_type, day_scheduled, start_time, end_time)
+                query = "INSERT INTO Classes (class_type, trainer_id, day_scheduled, start_time, end_time) VALUES (%s, NULL, %s, %s, %s);"
+            else:
+                query_params = (class_type, trainer_id, day_scheduled, start_time, end_time)
+                query = "INSERT INTO Classes (class_type, trainer_id, day_scheduled, start_time, end_time) VALUES (%s, %s, %s, %s, %s);"
+                
             cursor = mysql.connection.cursor()
             cursor.execute(query, query_params)
             mysql.connection.commit()
@@ -97,11 +102,15 @@ def edit_class(class_id):
             day_scheduled = request.form["weekday"]
             start_time = request.form["starttime"]
             end_time = request.form["endtime"]
-            query_params = (class_type, trainer_id, day_scheduled, start_time, end_time, class_id)
 
-            print(query_params)
-            # write query (no NULL inputs allowed)
-            query = "UPDATE Classes SET class_type = %s, trainer_id = %s, day_scheduled = %s, start_time = %s, end_time = %s WHERE class_id = %s"
+            # write query
+            if (trainer_id == "NULL"):
+                query_params = (class_type, day_scheduled, start_time, end_time)
+                query = "UPDATE Classes SET class_type = %s, day_scheduled = %s, start_time = %s, end_time = %s WHERE class_id = %s"
+            else:
+                query_params = (class_type, trainer_id, day_scheduled, start_time, end_time)
+                query = "UPDATE Classes SET class_type = %s, trainer_id = %s, day_scheduled = %s, start_time = %s, end_time = %s WHERE class_id = %s"
+
             cursor = mysql.connection.cursor()
             cursor.execute(query, query_params)
             mysql.connection.commit()
@@ -343,7 +352,7 @@ def transactions():
 def register():
     if request.method == "GET":
         # mySQL query to get all classes with trainer names
-        query = "SELECT c.*, t.first_name, t.last_name FROM Classes c JOIN Trainers t ON c.trainer_id = t.trainer_id"
+        query = "SELECT c.*, t.first_name, t.last_name FROM Classes c LEFT OUTER JOIN Trainers t ON c.trainer_id = t.trainer_id"
         cursor = mysql.connection.cursor()
         cursor.execute(query)
         classes_data = cursor.fetchall()
